@@ -29,11 +29,11 @@ Before you begin, ensure you have the following prerequisites:
 - Basic understanding of Spring Boot and RESTful APIs
 
 ## Project Structure
-controller: HTTP request handling.
-service: Business logic and communication.
-repository: Database interaction (CRUD).
-test: Test classes for controllers, services, and repositories.
-Endpoints
-CRUD operations for departments via REST API.
+- controller: HTTP request handling.
+- service: Business logic and communication.
+- repository: Database interaction (CRUD).
+- test: Test classes for controllers, services, and repositories.
+## Endpoints
+- CRUD operations for departments via REST API.
 
 
