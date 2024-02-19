@@ -1,0 +1,80 @@
+# yaml file is more readable, and it reduces the duplicate values over here
+# most of the technologies are using yaml configuration itself
+
+# this application is executed in different environment and for the different environment we will be using different configuration properties
+#  this can be achieved by profiles using (---)
+
+server:
+  port: 8083
+  profiles:
+    active: qa
+spring:
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/db_spring_learn
+    password: JavaSql@123#
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect
+Welcome:
+  Message: Hello world !!
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/db_spring_learn-prod
+    password: JavaSql@123#
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect
+Welcome:
+  Message: Hello world !!
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: qa
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/db_spring_learn-qa
+    password: JavaSql@123#
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect
+Welcome:
+  Message: Hello world !!
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
